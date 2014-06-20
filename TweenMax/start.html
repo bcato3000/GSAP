@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TweenMax</title>
+    <style type="text/css">
+        body {
+            background-color: #ccc;
+        }
+        #demo{
+            position: relative;
+            width: 788px;
+            height: 340px;
+            margin:50px auto 0 auto;
+            padding-top:10px;
+            background: url(img/landscape.jpg); 
+        }
+
+        #message{    
+            position:relative;
+            margin:0 auto 0 auto;
+            text-align:center;
+            width:200px;
+            font-size:36px;
+            color:#fc0;
+            background-color:#0096dc;
+            font-family: Lucida, Arial, sans-serif;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            padding:20px;
+            border: solid 4px #A2D0F3;
+        }
+
+        #car{
+            position: absolute;
+            left: -421px;
+            background: url(img/cars_tiled.png) repeat-y;
+            width: 421px;
+            height: 1160px;
+            top: 180px;  
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <div id="message"><em>GO!</em></div>
+        <div id="car"></div>
+    </div>
+
+</body>
+    <!-- load scripts after dom has been rendered -->
+
+    <script src="js/jquery/jquery-1.10.1.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        
+        var $car = $("#car"),
+            $message = $("#message"),
+            count = 0,
+            tween;
+
+
+
+    });
+</script>
+</body>
+</html>

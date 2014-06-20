@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Burger Boy Finished</title>
+	<meta name="robots" content="noindex">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+</head>
+
+<body>
+	<link href='http://fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>
+	<div id="banner">
+		<div class="panel" id="panel1">
+			<h1>hungry?</h1>
+		</div>
+		<div class="panel" id="panel2">
+			<h2>How about now?</h2>
+		</div>
+		<div class="panel" id="panel3">
+			<div id="info">
+				<h1>Burger Boy</h1>
+				<ul>
+					<li>Free delivery in NYC</li>
+					<li>Open 24hrs</li>
+				</ul>
+				<div id="orderNow">order now</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/gsap/TweenMax.js"></script>
+	<script src="js/jquery/jquery-1.10.1.min.js"></script>
+	<script>
+	$(document).ready(function(){
+
+		var $panel1 = $("#panel1"),
+			$panel2 = $("#panel2"),
+			$panel3 = $("#panel3"),
+			$panel1Text = $("#panel1 h1"),
+			$panel2Text = $("#panel2 h2"),
+			$info = $("#info"),
+			$list = $("li"),
+			$orderNow = $("#orderNow"),    
+			tl;
+
+		tl = new TimelineMax({repeat:3, repeatDelay:2});
+
+		tl.from($panel1, 0.5, {opacity:0})
+		  .from($panel1Text, 0.5, {scale:0.5, opacity:0, ease:Back.easeOut})
+		  .set($panel2, {top:0}, "+=2")
+		  .from($panel2, 0.2, {opacity:0, scale:1.5})
+		  .from($panel2Text, 0.2, {top:250}, "+=0.5")
+		  .to($panel2Text, 0.2, {top:250}, "+=2")
+		  .set($panel3, {top:0}, "final")
+		  .from($info, 0.5, {top:250}, "final")
+		  .to($panel2, 0.5, {top: -60}, "final")
+		  .staggerFrom($list, 0.3, {opacity:0, left:50}, 0.1, "+=0.2")
+		  .from($orderNow, 0.5, {scale:0, opacity:0, ease:Back.easeOut});
+
+
+	});
+	
+	</script>
+
+</body>
+
+</html>

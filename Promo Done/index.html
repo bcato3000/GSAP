@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>noble gsap seminar - CodePen</title>
+
+  <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+
+</head>
+
+<body>
+
+  
+  
+  <div id="demo">
+    <div id="flyBy" class="panel">
+      <div id="starfield"></div>
+      <div class="title" id="title1">Animation</div>
+      <div class="title" id="title2">Beyond</div>
+      <div class="title" id="title3">Flash</div>
+    </div>
+    <div id="noble" class="panel">
+      <div id="top">
+        <div id="nobleLogo"><img src="img/noble.png"/></div>
+        <div id="desktop"><img src="img/desktop.png"/></div>
+        <div class="bars"></div>
+      </div>
+      <div id="bottom">
+        <div class="bars"></div>
+        <div id="presents">presents</div>
+      </div>  
+    </div>
+    <div class="panel" id="poweredByWrapper">
+      <div id="poweredBy">
+        <div class="bar"></div>
+      </div>
+    </div>
+    <div id="end" class="panel">    
+      <div id="gsapLogo"><img src="img/gsap_logo.jpg"/></div>
+      <div id="nobleLockup">
+        <div id="nobleIcon"><img src="img/noble_icon.png"/></div>
+        <p><span>classes and seminars at</span><br/>
+          Noble Desktop</p>
+        </div>
+      </div>
+      <div id="replay"><img src="img/replay.png"></div>
+    </div>
+
+  <script src="js/gsap/TweenMax.js"></script>
+  <script src="js/jquery/jquery-1.10.1.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    var $demo = $("#demo"),
+    width = $demo.width(),
+    height = $demo.height(),
+    mainTimeline = new TimelineLite(),
+    $replay = $("#replay");
+
+    CSSPlugin.defaultTransformPerspective = 600;
+
+    function getNobleTimeline() {
+      var $bars = $(".bars"),
+      $nobleLogo = $("#nobleLogo"),
+      $desktop = $("#desktop"),
+      $presents = $("#presents"),
+      $topBar = $("#top .bars"),
+      $bottomBar = $("#bottom .bars"),
+      $top = $("#top"),
+      $bottom = $("#bottom"), 
+      tl = new TimelineLite();
+
+      tl.from($bars,  1.2, {autoAlpha:0, width:0})
+      .from($nobleLogo, 0.5, {left:-150, ease:Back.easeOut})
+      .from($desktop, 0.8, {width:0, ease:Back.easeOut})
+      .from($presents, 0.5, {marginRight:40, autoAlpha:0})
+      
+      .add("end", "+=1")
+      .to($top, 0.4, {top:-250}, "end")
+      .to($bottom, 0.4, {top:height+50}, "end")
+      .from($topBar, tl.duration(), {backgroundPosition:"-150px"}, 0)
+      .from($bottomBar, tl.duration(), {backgroundPosition:"150px"}, 0)
+      return tl;
+    }
+
+    function getStarsTimeline() {
+      var $starfield = $("#starfield"),
+      tl = new TimelineLite();
+
+      for(var i = 0; i<50; i++) {
+        var element = $("<div class='star'></div>").appendTo($starfield);
+        TweenLite.set(element, {top:Math.random()*height, left:width});
+        tl.to(element, Math.random()*0.5, {left:-50, ease:Linear.easeNone}, Math.random()*3);
+      }
+      return tl;
+    }
+
+    function getTitlesTimeline() { 
+      var $titles = $(".title"),
+      tl = new TimelineLite();
+
+      $titles.each(function(index, element) {
+        tl.set(element, { left:-$(element).width()}, 0);
+        tl.to(element, 2.5, {left:width, ease:SlowMo.ease.config(0.1, 1.2)}, index*0.3);
+        tl.from(element, 2.7, {scale:0, opacity:0, ease:SlowMo.ease.config(0.1, 1.2, true)}, index*0.3);
+      })
+      return tl;
+    }
+
+    function getPoweredByTimeline() {
+      var poweredBy = $("#poweredBy");
+      var tl = new TimelineLite();
+      tl.from(poweredBy, 0.5, {autoAlpha:0, scale:2, ease:Elastic.easeOut})
+      .to(poweredBy.find("div"), 0.4, {width:"100%"})
+      .to(poweredBy,0.8, {rotationX:540, scale:4, top:400, transformOrigin:"top", ease:Back.easeIn}, "fadeOut")
+      .to(poweredBy, 0.2, {autoAlpha:0}, "-=0.3");
+      return tl;
+    }
+
+    function getEndTimeline() {
+      var $gsapLogo = $("#gsapLogo"),
+      $nobleIcon = $("#nobleIcon"),
+      $nobleText = $("#nobleLockup p"),
+      tl = new TimelineLite(); 
+      
+      tl.from($gsapLogo, 0.5, {scale:0.5, autoAlpha:0, ease:Back.easeOut})
+      .from($nobleIcon, 0.3, {rotationY:90, transformOrigin:"left top -100", autoAlpha:0, ease:Back.esaeOut}, "+=0.8")
+      .from($nobleText, 0.3, {autoAlpha:0, rotationX:90}, "+=0.3")
+      .from($replay, 0.4, {autoAlpha:0, rotation:"360_ccw"}, "+=0.3");
+      return tl;
+    }
+
+
+    //build main timeline
+    mainTimeline.from($demo, 0.5, {autoAlpha:0})
+    .add(getNobleTimeline(), 0.5)
+    .add("panel2", "-=1.5")
+    .add(getStarsTimeline(), "panel2")
+    .add(getTitlesTimeline(), "panel2")
+    .add(getPoweredByTimeline())
+    .add(getEndTimeline(), "-=0.2");
+
+    //mainTimeline.seek("panel2")
+
+
+    // config replay button
+    $replay.mouseenter(function(){
+    TweenLite.to(replay, 0.5, {rotation:"+=360", alpha:1});
+    });
+
+    $replay.mouseleave(function(){
+      TweenLite.to(replay, 0.5, {alpha:0.6});
+    })
+
+    $replay.click(function(){
+      mainTimeline.play(0.5);
+    });
+
+  })
+</script>
+
+</body>
+</html>

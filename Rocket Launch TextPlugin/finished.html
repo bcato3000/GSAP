@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Launch Sequence</title>
+    <link href='http://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        body {
+            background-color: #111;
+            color:white;
+        }
+        #demo {
+            position:relative;
+            width:400px;
+            height:700px;
+            background-color: #000;
+            margin:auto;
+            overflow:hidden;
+            background:url(img/bg.png);
+        }
+        #rocket {
+            position:absolute;
+            top:350px;
+            left:160px;
+            width:78px;
+            height:254px;  
+        }
+
+        #rocketImage {
+            width:78px;
+            height:254px;
+            position:absolute;
+            background:url(img/rocket.png);
+            
+        }
+        #flames {
+            position:absolute;
+            top:249px;
+            left:27px;
+            width:96px;
+            height:84px;
+            background:url(img/flames.png);
+            overflow:hidden;
+        }
+
+        #countDown {
+            position:absolute;
+            font-size:80px;
+            text-align:center;
+            top:200px;
+            width:400px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight:bold;
+            color:#f6ec11;
+            
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <div id="rocket">
+           <div id="flames"></div>
+           <div id="rocketImage"></div>      
+       </div>
+       <div id="countDown">Ready</div>
+   </div>
+
+</body>
+    <!-- load scripts after dom has been rendered -->
+    <script src="js/gsap/TweenMax.js"></script>
+    <script src="js/gsap/plugins/TextPlugin.js"></script>
+    <script src="js/jquery/jquery-1.10.1.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        
+        var $demo = $("#demo"),
+            $flames = $("#flames"),
+            $rocket = $("#rocket"),
+            $countDown = $("#countDown"),
+            tl = new TimelineLite();
+   
+        tl.from($countDown, 1, {scale:0, opacity:0})
+        .set($countDown, {text:"Set"})
+        .from($countDown, 1, {scale:0, opacity:0, immediateRender:false})
+        .set($countDown, {text:"GO!", scale:0})
+        .to($countDown, 0.5, {scale:2, opacity:0})
+
+
+    });
+</script>
+</body>
+</html>

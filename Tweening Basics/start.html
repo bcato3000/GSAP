@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tweening Basics</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        body {
+            background-color: #ccc;
+        }
+
+        #icon {
+          position: relative;
+        }
+    </style>
+</head>
+
+<body>
+<img id="icon" src="img/noble-icon.png" width="210" height="211">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/gsap/TweenLite.js"></script>
+<script src="js/gsap/plugins/CSSPlugin.js"></script>
+<script src="js/gsap/easing/EasePack.js"></script>
+<script>
+	var icon = $('#icon');
+	TweenLite.to(icon, 2, {rotation:360, left:400, ease:Power1.easeOut, delay:1});
+</script>
+</body>
+</html>

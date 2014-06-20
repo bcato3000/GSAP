@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Island Tours</title>
+	<meta name="robots" content="noindex">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+</head>
+
+<body>
+	<div id="tourWrapper">
+		<div id="mapPanel">
+			<div id="map"></div>
+		</div>
+		<div id="descriptionPanel">
+			<h2>Location</h2>
+			<div>Description</div>
+		</div>
+		<div id="nav">
+			<div id="prev" class="directional">prev</div>
+			<div id="next" class="directional">next</div>
+			<div id="buttons"></div>
+		</div>
+	</div>
+
+	<script src="js/gsap/TweenMax.js"></script>
+	<script src="js/jquery/jquery-1.10.1.min.js"></script>
+	<script>
+	$(document).ready(function(){
+
+		var $map = $("#map"),
+			$descriptionHead = $("#descriptionPanel h2"),
+			$descriptionText = $("#descriptionPanel div"),
+			$nextBtn = $("#next"),
+			$prevBtn = $("#prev"),
+			descriptions = [],
+			labels = [],
+			firstLabel,
+			lastLabel,
+			activeButton,
+			tl;
+
+		//populate an array with descriptions of each location
+		descriptions["Greenlawn Point"] = "This small city shows its appreciation for late mornings and lazy afternoons by only having business hours from 10am to 2pm. We will be boarding the bus at 9:45am sharp for the next destination.";
+		descriptions["Oceanside"] = "One of the larger cities of the region, Oceanside excels at mixing big city life with beach-chic attitude.";
+		descriptions["Pineapple Island"] = "Don't let the name fool you: Pineapple Island has some of the most expensive and poor quality pineapples in the world. Visitors are known to savor the island's fresh seafood and avocados.";
+		descriptions["Oasis Villa"] = "This desert paradise is known for its excruciating heat and exotic spices. Visitors find themselves most interested in getting back to Pineapple Island.";	
+
+		//position map so that first location is visible	
+		
+		
+		//timeline
+
+
+	});
+	
+	</script>
+
+</body>
+
+</html>

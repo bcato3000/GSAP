@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Board Members</title>
+<link rel="stylesheet" href="css/reset.css">
+<style type = "text/css">
+body{
+	font-family: Arial, sans-serif;
+	margin-top:40px;
+}
+#main {
+	margin-left:250px;
+	width:800px;
+}
+.section {
+	padding:20px 0 80px 0;
+}
+h1 {
+	font-size:80px;
+}
+h2 {
+	font-size:48px;
+	border-bottom:2px solid #ccc;
+	padding-bottom:20px;
+}
+ul {
+	position:fixed;
+	top:150px;
+}
+li {
+	width:160px;
+	padding:10px;
+	margin-bottom:1px;
+	background-color:#111;
+	color:#ccc;
+	border-left:10px solid #333;
+	cursor:pointer;
+}
+p {
+	padding:20px 0px;
+	font-size:24px;
+	line-height:30px;
+	color:#555;
+}
+</style>
+</head>
+<body>
+<ul>
+  <li id="person1Btn">Simon Rich</li>
+  <li id="person2Btn">Rodrigo Jefferson</li>
+  <li id="person3Btn">Alice Jennings</li>
+  <li id="person4Btn">Dr. Smedley Harms</li>
+</ul>
+<div id="main">
+  <h1>Board Members</h1>
+  <div class="section" id="person1Bio">
+    <h2>Simon Rich</h2>
+    <p>Simon Rich is an American business magnate, investor, programmer, inventor and cyclist. Rich is the former chief executive and current chairman of Flemington Coat Factory, the world’s largest winter coat company, which he co-founded with Kevin Rudebager.</p>
+    <p>He is consistently ranked in the Forbes list of the world's wealthiest people and was the wealthiest overall from 1995 to 2009.</p>
+  </div>
+  <div class="section" id="person2Bio">
+    <h2>Rodrigo Jefferson</h2>
+    <p>Rodrigo Jefferson is best known for his role as CEO and founder of Mango Computer. Jefferson took the company from zero to ten employees in seven short years; each them retired millionaires when the company was sold in 1999. Since then, Jefferson has been advising many firms as a consultant. He spends his free time with his wife Judy and cat Freckles.</p>
+  </div>
+  <div class="section" id="person3Bio">
+    <h2>Alice Jennings</h2>
+    <p>Alice Jennings has made a name for herself as one of the world's top importers and exporters. She is a true master of getting anything to anywhere. Her international relationships and knowledge of trade law make her well suited to being on the board. As the company grows, Alice's expertise will be key to opening doors in emerging international markets.</p>
+  </div>
+  <div class="section" id="person4Bio">
+    <h2>Dr. Smedley Harms</h2>
+    <p>Dr. Smedley Harms has more degrees than an Arizona desert. Dr. Harms' knowledge of the economy on a global scale is invaluable to the company's growth. His distaste for travel and daylight makes him well suited to spending long hours buried in research.</p>
+    <p>His father was a Swiss immigrant and his American mother was of Polish-Italian heritage. He grew up in the community of Greenlawn, New York. In 1973, he attended college prep and engineering classes at Lawrence Technological University and graduated with a perfect score of 800 on the mathematical section of the SAT; a claim which he too-often uses as an icebreaker in social gatherings.</p>
+    <p>He has been self-nominated for a Nobel Peace prize for the past 25 years. Although not once hearing a response from the Nobel Board, this sort of dedication and persistence makes him one the company's most valued assets.</p>
+  </div>
+</div>
+
+<script src="js/gsap/TweenMax.js"></script>
+
+<script src="js/jquery/jquery-1.10.1.min.js"></script>
+<script type="text/javascript">
+  
+$(document).ready(function(){
+	
+	var $person1Btn =  $("#person1Btn"),
+		$person2Btn = $("#person2Btn"),
+		$person3Btn = $("#person3Btn"),
+		$person4Btn = $("#person4Btn"),
+		$navButtons = $("li");
+
+	$navButtons.click(function(){
+		
+	});
+
+	$navButtons.mouseenter(function(){
+		
+	});
+
+	$navButtons.mouseleave(function(){
+		
+	});
+
+	
+
+});
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Animation Beyond Flash</title>
+
+  <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+
+</head>
+
+<body>
+
+  
+  
+  <div id="demo">
+    <div id="flyBy" class="panel">
+      <div id="starfield"></div>
+    </div>
+  </div>
+
+  <script src="js/gsap/TweenMax.js"></script>
+  <script src="js/jquery/jquery-1.10.1.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    var $demo = $("#demo"),
+      width = $demo.width(),
+      height = $demo.height();
+
+    function getStarsTimeline(){
+      var $starfield = $("#starfield"),
+          tl = new TimelineLite();
+
+      for(var i=0; i<50; i++){
+        var element = $("<div class='star'></div>").appendTo($starfield);
+        TweenLite.set(element, {top:Math.random() * height, left:width});
+        tl.to(element, Math.random()*0.5, {left:-50, ease:Linear.easeNone}, Math.random()*3);
+
+      }  
+    }
+
+    getStarsTimeline();
+
+
+
+  })
+</script>
+
+</body>
+</html>

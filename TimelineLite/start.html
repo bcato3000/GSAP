@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Into The Wind</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="progress"></div>
+    <div id="page-wrap">
+        <h2>INTO</h2>
+        <h2>THE WIND</h2>
+        <p>Wind power, as an alternative to fossil fuels, is plentiful, renewable, widely distributed, and clean. The effects on the environment are generally less problematic than those from other power sources.  In 2010 wind energy production was growing rapidly at more than 25%&nbsp;per&nbsp;annum.</p> 
+        <div id="nav">
+            <div class="button">Is Wind Right for You</div>
+            <div class="button">Cost Savings Calculator</div>
+            <div class="button">Find a Local Wind Expert</div>
+        </div>
+
+    </div>
+    
+    <div id="bg">
+        <img src="img/background_wind_cropped.jpg">
+    </div>
+ 
+<!-- load scripts after dom has been rendered -->
+<script src="js/gsap/TweenMax.js"></script>
+<script src="js/jquery/jquery-1.10.1.min.js"></script>
+
+<!-- add your own script -->
+<script>
+    
+$(document).ready( function () {
+
+    var $bg = $("#bg"),
+        $into = $("h2").eq(0), // the first h2 in the document
+        $theWind = $("h2").eq(1), // the second h2 in the document
+        $mainCopy = $("p"),
+        $buttons  = $(".button"),
+        $progress = $(".progress"),
+        tl;
+
+});   
+
+</script>
+</body>
+</html>

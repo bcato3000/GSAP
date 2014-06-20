@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clip Demo</title>
+	<meta charset="utf-8">
+<style>
+	
+	.avatar {
+		position:absolute;
+		width:100px;
+		height:100px;
+		left:0;
+		background:url("img/avatar.png");
+	}
+
+	#topHalf {
+		left:110px;
+		clip:rect(0px 100px 50px 0px);
+	}
+	#bottomHalf {
+		left:220px;
+		clip:rect(50px 100px 100px 0px);
+	}
+
+	
+</style>
+</head>
+
+
+<body> 
+	<div class="avatar"></div>
+	<div class="avatar" id="topHalf"></div>
+	<div class="avatar" id="bottomHalf"></div>	
+</body>
+</html>

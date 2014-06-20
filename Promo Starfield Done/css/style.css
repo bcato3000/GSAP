@@ -1,0 +1,32 @@
+body{
+	background-color:#666;
+  color:white;  
+  font-family: sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+
+
+#demo{
+  position:relative;
+  width:500px;
+  height:445px;
+  background-color:#000;
+  margin:auto; 
+  overflow: hidden;
+}
+
+.panel {
+  position:absolute;
+  width:500px;
+  height:445px;
+}
+
+
+.star{
+  position:absolute;
+  width:27px;
+  height:4px;
+  background:url(../img/star.png);
+}
+

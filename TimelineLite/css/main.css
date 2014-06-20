@@ -1,0 +1,112 @@
+/*full background: http://css-tricks.com/examples/FullPageBackgroundImage/css-2.php */
+
+@font-face {
+	font-family: 'archivo_blackregular';
+	src: url('fonts/archivoblack/archivoblack-regular-webfont.eot');
+	src: url('fonts/archivoblack/archivoblack-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	url('fonts/archivoblack/archivoblack-regular-webfont.woff') format('woff'),
+	url('fonts/archivoblack/archivoblack-regular-webfont.ttf') format('truetype'),
+	url('fonts/archivoblack/archivoblack-regular-webfont.svg#archivo_blackregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+body {
+	margin:0;
+	font-family: 'archivo_blackregular', Impact, Arial, sans-serif;
+}
+
+#bg {
+	position:fixed; 
+	top:-50%; 
+	left:-50%; 
+	width:200%; 
+	height:200%;
+}
+#bg img {
+	position:absolute; 
+	top:0; 
+	left:0; 
+	right:0; 
+	bottom:0; 
+	margin:auto; 
+	min-width:50%;
+	min-height:50%;
+}
+
+#page-wrap { position: relative; z-index: 2; width: 100%; margin: 50px auto; overflow:hidden;}
+
+
+p { 
+	position:relative;
+	width:90%;
+	margin:30px auto;
+	text-align:center;
+	font-family:serif;
+	font-size:36px;
+	color:#eaf6ff;
+	
+ }
+
+
+h2 {
+	position:relative;
+	margin:0px;
+	font-size:146px;
+	line-height:130px;
+	color:#fff;
+	text-align:center;
+}
+
+#nav {
+	text-align:center;
+}
+.button {
+
+	background-color:#b65651;
+	padding:20px;
+	display:inline-block;
+	color:#efefef;
+	font-family:Arial, Helvetica, Verdana;
+	font-size:20px;
+	letter-spacing: 0.05em;
+	margin: 0 10px 30px 0;
+}
+
+.progress {
+	position:relative;
+	z-index:3;
+	width:100%;
+	height:8px;
+	background-color:#fff;
+}
+
+h2, p {
+	text-shadow:4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* media queries */
+@media (max-width: 830px) {
+	h2 {
+		font-size: 120px;
+		line-height: 106px;
+	}
+	p {
+		font-size: 26px;
+	}
+}
+
+@media (max-width: 700px) {
+	#page-wrap { 
+		margin-top: 20px
+	}
+	h2 {
+		font-size: 90px;
+		line-height: 80px;
+	}
+	p {
+		font-size: 24px;
+	}
+}
+

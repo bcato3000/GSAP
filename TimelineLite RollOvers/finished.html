@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Into The Wind</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="js/jqueryUI/css/ui-lightness/jquery-ui-1.10.3.custom.min.css">
+</head>
+<body>
+	<div class="progress"></div>
+	
+	<div id="page-wrap">
+		<div id="controller">
+			<button id="play">play()</button>
+			<button id="pause">pause()</button>
+			<button id="reverse">reverse()</button>
+			<button id="resume">resume()</button>
+			<button id="restart">restart()</button>
+			<button id="fastSpeed">timeScale(4)</button>
+			<button id="normalSpeed">timeScale(1)</button>
+			<div id="slider"></div>
+		</div>
+		<h2>INTO</h2>
+		<h2>THE WIND</h2>
+		<p>Wind power, as an alternative to fossil fuels, is plentiful, renewable, widely distributed, and clean.The effects on the environment are generally less problematic than those from other power sources.  In 2010 wind energy production was growing rapidly at more than 25%&nbsp;per&nbsp;annum.</p> 
+		<div id="nav">
+			<div class="button">Is Wind Right for You</div>
+			<div class="button">Cost Savings Calculator</div>
+			<div id="mapContainer">
+				<div id="mapPanel">
+					<img src="img/map.jpg" height="196" width="279" id="map">
+					<div class="pin" id="pin1"></div>
+					<div class="pin" id="pin2"></div>
+					<div class="pin" id="pin3"></div>
+					<div class="pin" id="pin4"></div>
+					<div id="form">
+	  					<input type="text" name="zip" id="search" class="inline-field-search" value="city and state or zip" />
+	  					<input type="submit" name="submit" value="submit" id="submit" class="inline-field-submit" />
+					</div>
+				</div>
+				<div class="button">Find a Local Wind Expert</div>
+			</div>
+		</div>
+
+	</div>
+	
+	<div id="bg">
+		<img src="img/background_wind_cropped.jpg">
+	</div>
+ 
+<!-- load scripts after dom has been rendered -->
+<script src="js/gsap/TweenMax.js"></script>
+<script src="js/jquery/jquery-1.10.1.min.js"></script>
+<script src="js/jqueryUI/js/jquery-ui-1.10.3.custom.min.js"></script>
+
+
+<script>
+	
+$(document).ready( function () {
+
+	var $bg = $("#bg"),
+		$into = $("h2").eq(0), 
+		$theWind = $("h2").eq(1), 
+		$mainCopy = $("p"),
+		$buttons  = $(".button"),
+		$progress = $(".progress"),
+		tl;
+
+	 
+	CSSPlugin.defaultTransformPerspective = 800;
+
+
+	tl = new TimelineLite({onUpdate:updateSlider, onComplete:initMapButton});
+	
+	tl.from($bg, 0.8, {opacity:0})
+	  .from($into, 0.5, {left:-200, opacity:0})
+	  .from($theWind, 0.5, {left:200, opacity:0}, "-=0.25")
+	  .from($mainCopy, 0.8, {top:50, opacity:0}, "+=0.5")
+	  .staggerFrom($buttons, 0.7, {rotationX:-90, opacity:0, transformOrigin:"center top", ease:Back.easeOut.config(3)}, 0.2, "buttons")
+
+	  .from($progress, tl.duration(), {scaleX:0, transformOrigin:"left", ease:Linear.easeNone}, 0)
+	  .to($progress, 0.2, {opacity:0, top:-8});
+
+
+	//scripts for controls
+
+	$("#play").click(function(){
+		if(tl.progress() < 1){	
+			tl.play()
+		} else {
+			tl.restart();
+		}
+	});
+
+	$("#pause").click(function(){
+		tl.pause();
+	});
+
+	$("#reverse").click(function(){
+		tl.reverse();
+	});
+
+	$("#resume").click(function(){
+		tl.resume();
+	});
+
+	$("#restart").click(function(){
+		tl.restart();
+	});
+
+	$("#fastSpeed").click(function(){
+		tl.timeScale(4);
+	});
+
+	$("#normalSpeed").click(function(){
+		tl.timeScale(1);
+	});
+
+	$("#slider").slider({
+		min: 0,
+		max: 1,
+		step:0.001,
+		slide: function ( event, ui ) {
+			tl.pause();
+			//adjust the timeline's progress() based on slider value
+			tl.progress( ui.value );
+		}
+	}); 
+
+	function updateSlider() {
+	  $("#slider").slider("value", tl.progress());
+	}   
+
+	//Fancy Rollover Code
+
+	var $mapContainer = $("#mapContainer"),
+		$localExpertBtn = $("#mapContainer .button"),
+		$mapPanel = $("#mapPanel"),
+		$pins = $(".pin"),
+		$form = $("#form"),
+		mapTimeline;
+
+	mapTimeline = new TimelineLite({paused:true});
+
+	mapTimeline.to($localExpertBtn, 0.5, {backgroundColor:"#03203b"})
+	  		   .from($mapPanel, 0.5, {clip:"rect(204px 287px 204px 0px)"}, 0)
+	  		   .to($mainCopy, 0.5, {opacity:0.1}, 0)
+	  		   .staggerFrom($pins, 0.3, {top:-50}, 0.05, "-=0.1")
+	  		   .from($form, 0.2, {top:"+=20", opacity:0});
+
+	function initMapButton(){
+		$mapContainer.mouseenter(function() {
+			mapTimeline.play().timeScale(1);
+		});
+
+		$mapContainer.mouseleave(function() {
+			mapTimeline.reverse().timeScale(3);
+		});
+	}
+
+	//hide controller
+	TweenLite.set("#controller", {visibility:"hidden"});
+	//advance intro animation to the end
+	tl.progress(1);
+	
+
+});   
+
+</script>
+</body>
+</html>

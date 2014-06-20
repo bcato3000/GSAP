@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Staggered Animation</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<div id="sideBar">
+		<div id="header">
+			 <img src="img/logo.png">
+		</div>
+		<div id="upcoming"><h1>Upcoming Shows</h1></div>
+		<div class="show">
+			<div class="pic"><img src="img/thumb-low-lustre.jpg"></div>
+			<h3>Low Lustre</h3>
+			<div>Thursday, June 5th</div>
+			<div>Show: 10PM $15</div>
+			<div class="button">Tickets</div>
+		</div>
+		<div class="show">
+			<div class="pic"><img src="img/thumb-juliette.jpg"></div>
+			<h3>Juliette</h3>
+			<div>Friday, June 6th</div>
+			<div>Show: 10PM $15</div>
+			 <div class="button">Tickets</div>
+		</div>
+		<div class="show">
+			<div class="pic"><img src="img/thumb-plastic-brain.jpg"></div>
+			<h3>Plastic Brain</h3>
+			<div>Saturday, June 7th</div>
+			<div>Show: 10PM $15</div>
+			<div class="button">Tickets</div>
+		</div>
+		<div class="show">
+			<div class="pic"><img src="img/thumb-dusty-shoes.jpg"></div>
+			<h3>Dusty Shoes</h3>
+			<div>Sunday, June 8th</div>
+			<div>Show: 2PM $10</div>
+			<div class="button">Tickets</div>
+		</div>
+	</div>  
+	
+</body>
+	<!-- load scripts after dom has been rendered -->
+	<script src="js/gsap/TweenMax.js"></script>
+	<script src="js/jquery/jquery-1.10.1.min.js"></script>
+
+	<script>
+	$(document).ready(function() {
+
+		var $header = $("#header"),
+			$logo = $("#header img"),
+			$upcoming = $("#upcoming"),
+			$shows = $(".show");//selects every element with a class of show
+
+		TweenLite.from($header, 0.5, {opacity:0});
+		TweenLite.from($logo, 0.5, {scale:0.5, rotation:-20, ease:Back.easeOut});
+		TweenLite.from($upcoming, 0.5, {opacity:0, delay:0.5});
+
+	});
+</script>
+</body>
+</html>

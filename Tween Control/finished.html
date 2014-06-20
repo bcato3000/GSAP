@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tween Control</title>
+    <style type="text/css">
+        body {
+            background-color: #ccc;
+        }
+
+        #speedGauge {
+            position:relative;
+            width:360px;
+            height:366px;
+            background: url(img/dial.png) no-repeat;
+            cursor:pointer;
+            margin: 50px auto 0 auto;
+        }
+
+        #pointer {
+            position:absolute;
+            left:180px;
+            top:180px;
+        }
+
+        #center {
+            position:absolute;
+            left:160px;
+            top:165px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="speedGauge">
+    <img id="pointer" src="img/pointer.png" height="9" width="89">
+    <img id="center" src="img/disc.png" height="41" width="40">
+</div>
+
+</body>
+<!-- load scripts after dom has been rendered -->
+<script src="js/gsap/TweenLite.js"></script>
+<script src="js/gsap/plugins/CSSPlugin.js"></script>
+<script src="js/gsap/easing/EasePack.js"></script>
+<script src="js/jquery/jquery-1.10.1.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        
+        var $pointer = $("#pointer"),
+            $gauge = $("#speedGauge");
+
+        TweenLite.set($pointer, {rotation:142, transformOrigin:"0px 4px"});
+
+        var pointerTween = TweenLite.to($pointer, 1, {rotation:"20_cw", ease:Power1.easeIn, paused:true});
+
+         $gauge.mouseenter( function() { 
+            pointerTween.play();
+        });
+
+        $gauge.mouseleave( function() {
+            pointerTween.reverse();
+        });
+        
+    });
+</script>
+</body>
+</html>

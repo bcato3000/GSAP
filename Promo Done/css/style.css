@@ -1,0 +1,167 @@
+body{
+	background-color:#666;
+  color:white;  
+  font-family: sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+
+
+#demo{
+  position:relative;
+  width:500px;
+  height:445px;
+  background-color:#000;
+  margin:auto;
+  overflow:hidden;
+  visibility:hidden;
+}
+
+.panel {
+  position:absolute;
+  width:500px;
+  height:445px;
+}
+
+
+
+#top{
+  position:relative;
+  width:500px;
+  height:222px;
+  background-color:white; 
+}
+
+#nobleLogo{
+  position:absolute;
+  top:173px;
+  left:14px;
+}
+
+#desktop{
+  position:absolute;
+  top:173px;
+  left:131px;
+  width:158px;
+  overflow:hidden;
+}
+
+#top .bars{
+  top:218px;
+}
+
+#bottom{
+  position:absolute;
+  top:222px;
+  width:500px;
+  height:223px;
+  background-color:white;
+}
+
+#presents{
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:18px;
+  text-align:right;
+  color:#555;
+  letter-spacing:4px;
+  margin-top:6px;
+  margin-right:10px;
+  position:relative;
+}
+
+.bars{
+ position:absolute;
+ width:500px;
+ height:4px;  background:url(../img/color_bars.png); 
+}
+
+#bottom .bars{
+  background-position:-300px 0px;
+}
+
+.star{
+  position:absolute;
+  width:27px;
+  height:4px;
+  background:url(../img/star.png);
+}
+
+.title{
+  font-family: sans-serif;
+  position:absolute;
+  display:inline-block;
+  margin:0;
+  font-weight:400;
+}
+
+#title1 {
+  font-size:90px;
+  top:80px;
+}
+
+#title2 {
+  font-size:40px;
+  top:170px;
+}
+
+#title3 {
+  font-size:140px;
+  top:210px;
+}
+
+#poweredBy{
+  position:absolute;
+  width:392px;
+  height:70px;
+  left:55px;
+  top:168px;
+  background:url(../img/bowered_by.png);
+  background-position:0px 3px;
+}
+#poweredBy .bar{
+  width:0%;
+  height:3px;
+  background-color:#91e600;
+}
+
+#gsapLogo{
+  position:absolute;
+  width:500px;
+  height:370px;
+}
+
+#nobleLockup{
+  position:absolute;
+  left:15px;
+  top:375px;
+  width:400px;
+  height:100px;
+}
+
+#nobleLockup img{
+  float:left;
+  position:relative;
+}
+
+#nobleLockup p{
+  position:relative;
+  display:inline;
+  float:left;
+  clear:none;
+  font-size:22px;
+  margin-top:11px;
+  margin-left:12px;
+}
+
+#nobleLockup p span{ 
+  color:#666;
+}
+
+#replay{
+  position:absolute;
+  left:472px;
+  top:417px;
+  width:19px;
+  height:19px;
+  cursor:pointer;
+}

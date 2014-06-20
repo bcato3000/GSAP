@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Slider</title>
+    <style type="text/css">
+        body {
+            background: url(img/bg-body.jpg) repeat-x #000;
+        }
+
+        .sliderWrapper {
+            /*position: relative;*/
+            width: 530px;
+            height: 375px;
+            white-space: nowrap;
+            margin: 50px auto 0 auto;
+            overflow:hidden;
+        }
+
+        .sliderWrapper div{
+            position: relative;
+        }
+
+        .nav {
+            margin:10px auto 0 auto;
+            width:530px;
+
+        }
+
+        .button {
+            padding: 10px;
+            background-color: #fff;
+            display: inline-block;
+            cursor:pointer;
+        }
+
+        .button:hover {
+            background-color:#ffcc00;
+        }
+
+        .buttonRight {
+            float:right;
+        }
+
+    </style>
+</head>
+<body>
+<div class="sliderWrapper">
+    <div id="sliderImages">
+        <img src="img/scroll-battle.jpg" width="530" height="375"><img src="img/scroll-blast.jpg" width="530" height="375"><img src="img/scroll-bugs.jpg" width="530" height="375"><img src="img/scroll-lustre.jpg" width="530" height="375">
+    </div>
+</div>
+<div class="nav">
+    <div id="nextButton" class="button buttonRight">next</div>
+</div>
+
+
+
+<!-- load scripts after dom has been rendered -->
+<script src="js/gsap/TweenLite.js"></script>
+<script src="js/gsap/plugins/CSSPlugin.js"></script>
+<script src="js/gsap/easing/EasePack.js"></script>
+
+<script src="js/jquery/jquery-1.9.1.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+    var slideWidth = 530,
+        $slider = $("#sliderImages"),
+        $nextButton = $("#nextButton"),
+        clickCount = 0;
+
+    $nextButton.click(function() {
+        clickCount++;
+        if (clickCount > 3){
+            clickCount = 0;
+        }
+        console.log(clickCount);
+        TweenLite.to($slider, 0.5, {left: -clickCount * slideWidth});        
+    });
+});
+
+
+</script>
+</body>
+</html>

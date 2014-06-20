@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2D Transforms</title>
+    <style type="text/css">
+        body {
+            background-color: #ccc;
+        }
+
+    .square{
+        background-color:#0066ee;
+        width:100px;
+        height:100px;
+    }
+
+    .orange{
+        background-color:#ff6600;
+    }
+
+    h1{
+        padding:20px;
+        background-color:white;
+    }
+    </style>
+</head>
+<body>
+
+<div id="bottom-right" class="square orange"></div>
+<div id="top-right" class="square"></div>
+<h1>SKEW</h1>
+
+<!-- load scripts after dom has been rendered -->
+<script src="js/gsap/TweenLite.js"></script>
+<script src="js/gsap/plugins/CSSPlugin.js"></script>
+<script src="js/gsap/easing/EasePack.js"></script>
+<!-- load jQuery -->
+<script src="js/jquery/jquery-1.9.1.min.js"></script>
+
+<!-- add your own script -->
+<script>
+    TweenLite.to("#bottom-right", 2, {rotation:"360_ccw", transformOrigin:"bottom right"});
+    TweenLite.to("#top-right", 2, {rotation:360, transformOrigin:"top right"});
+
+    TweenLite.to("#bottom-right", 2, {scale:0, transformOrigin:"bottom left", delay:2});
+    TweenLite.to("#top-right", 2, {scale:0, transformOrigin:"top right", delay:2});
+
+    TweenLite.to("h1", 1, {skewY:10, transformOrigin:"top left"});
+</script>
+</body>
+</html>

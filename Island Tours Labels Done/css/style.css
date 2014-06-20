@@ -1,0 +1,98 @@
+body{
+  font-family:Verdana, Helvetica, Arial, sans-serif;
+   background-color:#1C272B;
+}
+
+#tourWrapper {
+  position:relative;
+  width:800px;
+  height:450px;
+  background:white;
+  margin:100px auto;
+}
+
+#mapPanel {
+  position:absolute;
+  width:800px;
+  height:385px;
+  overflow:hidden;
+}
+
+#map {
+  width:1750px;
+  height:1050px;
+  background:url(../img/map.jpg);
+}
+
+#descriptionPanel { 
+  position:absolute;
+  width:215px;
+  height:385px;
+  left:545px;
+  padding:20px;
+  background-color:rgb(255, 255, 255);
+  background-color:rgba(255, 255, 255, 0.8);
+  overflow:hidden;
+}
+
+
+#descriptionPanel h2 {
+  position:relative;
+  font-size:24px;
+}
+
+#descriptionPanel div {
+  position:relative;
+  margin: 20px 0;
+  font-size:16px;
+  line-height:22px;
+}
+
+#nav {
+  position:relative;
+  
+  height:45px;
+  top:385px;
+  padding:20px 15px 0 15px;
+  background-color:lightblue;
+  text-align:center;
+}
+
+
+#nav .directional{
+  display:inline-block;
+  padding:6px 20px;
+  border-radius:8px;
+  color:white;
+  border:solid 2px white;
+  cursor:pointer;
+  color:#3583bc;
+}
+
+#nav .directional:hover{
+  color:#214b69;
+}
+
+#nav #prev {
+  float:left;
+}
+
+#nav #next {
+  float:right;
+}
+
+
+
+#nav #buttons div{
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background-color:#3583bc;
+  border: solid 4px #3583bc;
+  display:inline-block;
+  list-style-type: none;
+  margin-right:10px;
+  margin-top:5px;
+  cursor:pointer;
+}
+

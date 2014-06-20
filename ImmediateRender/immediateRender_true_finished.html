@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ImmediateRender</title>
+    <link href='http://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        body {
+            background-color: #111;
+            color:white;
+        }
+        #demo {
+            position:relative;
+            width:400px;
+            height:700px;
+            background-color: #000;
+            margin:auto;
+            overflow:hidden;
+            background:url(img/bg.png);
+        }
+        
+
+        h1 {
+            
+            font-size:60px;
+            text-align:center;
+            top:200px;
+            width:400px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight:bold;
+            color:#f6ec11;
+            
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <h1 id="animation">Animation</h1>
+        <h1 id="beyond">Beyond</h1>
+        <h1 id="flash">Flash</h1>
+   </div>
+
+</body>
+    <!-- load scripts after dom has been rendered -->
+    <script src="js/gsap/TweenMax.js"></script>
+    <script src="js/gsap/plugins/TextPlugin.js"></script>
+    <script src="js/jquery/jquery-1.10.1.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        
+    var tl = new TimelineLite({delay:1});
+
+    tl.from("#animation", 1, {opacity:0, immediateRender:false})
+      .from("#beyond", 1, {opacity:0, immediateRender:false})
+      .from("#flash", 1, {opacity:0, immediateRender:false})
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+body{
+  font-family:Asap, Arial, sans-serif;
+	background-color:#555;
+  color:white;
+  margin:20px;  
+}
+
+#banner {
+  position:relative;
+  width:300px;
+  height:250px;
+  background:white;
+  overflow:hidden;
+}
+
+.panel {
+  position:absolute;
+  width:300px;
+  height:250px;
+  overflow:hidden;
+
+}
+
+#panel1 {
+  background: #a02600;
+ 
+}
+
+#panel2 {
+  top:260px;
+  background: url(http://s.cdpn.io/16327/burger.jpg);
+}
+
+#panel1 h1 {
+  position: relative;
+  font-size:40px;
+  line-height:240px;
+  text-align:center;
+  width:300px;
+}
+
+#panel2 h2{
+  margin: 0;
+  position: absolute;
+  top: 188px;
+  width: 260px;
+  font-size: 22px;
+  text-align: center;
+  padding: 20px;
+  background: #a02600;
+}
+
+#panel3 {
+  top:520px;
+}
+
+#panel3 #info{
+  position:absolute;
+  top:125px;
+  width:100%;
+  padding:10px;
+  height:125px;
+  background: #a02600;
+}
+
+#panel3 h1 {
+  font-size:34px;
+  font-weight:700;
+  letter-spacing: 1px;
+}
+
+#panel3 li {
+  position:relative;
+  margin-top:10px;
+  color: #ffa488;
+}
+
+#panel3 #orderNow {
+  position:absolute;
+  top:60px;
+  left:180px;
+  background:#ffc600;
+  color:#000;
+  font-size:16px;
+  font-weight:bold;
+  padding:10px;
+  border-radius:10px;
+  border: 4px solid transparent;
+}
+
+#panel3 #orderNow:hover {
+  background:#ffaa00;
+  border: 4px solid #fff;
+  cursor: pointer;
+}

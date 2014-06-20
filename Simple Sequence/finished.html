@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Sequence</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        @font-face {
+        font-family: 'BreeSerifRegular';
+        src: url('fonts/bree-serif/BreeSerif-Regular-webfont.eot');
+        src: url('fonts/bree-serif/BreeSerif-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/bree-serif/BreeSerif-Regular-webfont.woff') format('woff'), url('fonts/bree-serif/BreeSerif-Regular-webfont.ttf') format('truetype'), url('fonts/bree-serif/BreeSerif-Regular-webfont.svg#BreeSerifRegular') format('svg');
+        font-weight: normal;
+        font-style: normal;
+        }
+        body {
+            background: #000 url(img/bg-body.jpg) repeat-x;
+            font-family: 'BreeSerifRegular';
+            color:#eee;
+        }
+
+        .panel {
+            position: relative;
+            width: 760px;
+            height: 224px;
+            background: #000;
+            margin:20px auto 0 auto;
+            overflow: hidden;
+        }
+
+        #bg {
+            postion: absolute;
+        }
+
+        #logo {
+            position: absolute;
+            left: 20px;
+            top: 5px;
+        }
+
+        #address {
+            position: absolute;
+            left: 483px;
+            top: 184px;
+            color:#fcb802;
+            width:300px;
+        }
+
+        #content {
+            position: relative;
+            width: 720px;
+            padding:20px;
+            background: #222;
+            margin:0px auto 0 auto;
+        }
+
+        h1 {
+            margin:0;
+        }
+
+        p{
+            color:#ccc;
+        }
+    </style>
+</head>
+<body>
+ 
+<div class="panel">
+    <img id="bg" src="img/skyline.jpg" width="760" height="225">
+    <img id="logo" src="img/jf-logo.png" width="250" height="216">
+    <div id="address">580 Lipsenard St. New York NY 10012</div>
+</div>
+<div id="content">
+<h1>The Jive Factory</h1>
+<p>The Jive Factory is a restaurant and venue in Lower Manhattan, dedicated to the best food and music the city has to offer. Stop in for dinner, stick around for a drink, and see the greatest up-and-coming acts in a small and friendly performance space.</p>
+
+<p>We have a dining room and a full bar on the ground floor, and a large concert space downstairs with a stage, open standing room, and a second bar in the back.</p>
+</div>
+
+
+<!-- load scripts after dom has been rendered -->
+<script src="js/gsap/TweenLite.js"></script>
+<script src="js/gsap/plugins/CSSPlugin.js"></script>
+<script src="js/gsap/easing/EasePack.js"></script>
+
+<script>
+    <!-- add your own script -->
+
+    TweenLite.from("bg", 1, {opacity:0, delay:0.5});
+    TweenLite.from("logo", 1, {left:-200, rotation:-90, scale:0, ease:Back.easeOut, delay:1.5});
+    TweenLite.from("address", 1, {left:"+=100", opacity:0, ease:Back.easeOut,  delay:2});
+    TweenLite.from("content", 0.5, {opacity:0, top:100, delay:3});
+
+</script>
+</body>
+</html>

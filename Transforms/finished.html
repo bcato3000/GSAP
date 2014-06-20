@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2D Transforms</title>
+    <style type="text/css">
+        body {
+            background-color:#041218;
+            color: white;
+        }
+
+        .panel {
+            position: relative;
+            background: url(img/gradient-bg.jpg);
+            width: 700px;
+            height: 400px;
+            margin:50px auto 0 auto;
+            overflow: hidden;       
+        }
+
+        .clapper {
+            position: absolute;
+            width: 295px;
+            height: 225px;
+            left: 32px;
+            top: 105px;
+        }
+
+        .clapper-top {
+            position: absolute;
+        }
+
+        .clapper-bottom {
+            position: absolute;
+            top: 30px;
+        }
+
+        .panel h3 {
+            position: absolute;
+            left: 350px;
+            top: 100px;
+            font-size: 60px;
+            font-family: Arial, Verdana, Helvetica, sans-serif;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="panel">
+    <div class="clapper">
+        <img class="clapper-top" src="img/clapper-top.png">
+        <img class="clapper-bottom" src="img/clapper-bottom.png">
+    </div>
+    <h3>ACTION!</h3>
+</div>
+
+<!-- load scripts after dom has been rendered -->
+<script src="js/gsap/TweenLite.js"></script>
+<script src="js/gsap/plugins/CSSPlugin.js"></script>
+<script src="js/gsap/easing/EasePack.js"></script>
+
+<!-- load jQuery -->
+<script src="js/jquery/jquery-1.9.1.min.js"></script>
+
+
+<script>
+ 
+    
+    var $clapperTop = $(".clapper-top"),
+        $action = $(".panel h3");
+
+    TweenLite.to($clapperTop, 0.5, {rotation:-20, transformOrigin:"15px 15px",  ease:Power4.easeIn});
+    TweenLite.to($clapperTop, 0.1, {rotation:0, ease:Power4.easeIn, delay:1});
+    TweenLite.from($action, 0.2, {opacity:0, scale:0, ease:Bounce.easeOut, delay:1.1});
+    TweenLite.to($action, 0.5, {skewX:-45, left:750, ease:Back.easeIn, delay:1.5});
+
+
+</script>
+</body>
+</html>

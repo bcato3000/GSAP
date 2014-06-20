@@ -1,0 +1,79 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>Quote</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<style type = "text/css">
+
+	html, body {
+	height: 100%;
+	}
+	body {
+	-webkit-font-smoothing: subpixel-antialiased;
+	color: #fff;
+	background: black url(img/bg-noble-swoosh.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+			background-size: cover;	
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 100;
+	letter-spacing: 0.1em;
+	overflow: hidden;
+	margin: 0;
+	}	
+	.wrapper {
+		width: 70%;
+		height: 100%;
+		margin: auto;
+		padding-top:100px;
+		position: relative;
+	}
+	#quote {
+		font-size: 50px;
+		line-height: 55px;
+	}
+	#author {
+		font-size:28px;
+		margin-top:20px;
+		text-align:right;
+	}
+	
+	</style>
+	</head>
+<body>
+<div class="wrapper">
+	<div id="quote">Many of life’s failures are experienced by people who did not realize how close they were to success when they gave up.</div>
+	<div id="author">THOMAS EDISON</div>
+</div>
+
+<script src="js/gsap/TweenMax.js"></script>
+<script src="js/gsap/utils/SplitText.js"></script>
+<script src="js/jquery/jquery-1.10.1.min.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+	var quote, author, tl;
+
+	//applies perspective to #quote and #author divs and allows each child element to share the same 3D space with the same vanishing points.
+	TweenLite.set(["#quote", "#author"], {perspective:400});
+	
+	quote = new SplitText("#quote", {type:"lines"});
+	author = new SplitText("#author", {type:"chars"});
+
+	tl = new TimelineLite({onComplete:revert});
+	tl.staggerFrom(quote.lines, 0.6, {opacity:0, rotationX:-90, transformOrigin:"50% top -200"}, 0.1)
+	  .staggerFrom(author.chars, 0.6, {opacity:0, rotationX:180}, 0.02)
+
+	function revert() {
+		quote.revert();
+		author.revert();
+	}
+
+});
+
+
+
+	</script>
+	</body>
+	</html>
