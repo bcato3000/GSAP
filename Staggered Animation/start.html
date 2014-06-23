@@ -59,6 +59,9 @@
 		TweenLite.from($logo, 0.5, {scale:0.5, rotation:-20, ease:Back.easeOut});
 		TweenLite.from($upcoming, 0.5, {opacity:0, delay:0.5});
 
+		TweenLite.set($shows, {transformPerspective: 600});
+		TweenMax.staggerFrom($shows, 0.4, {opacity: 0, rotationX: -90, transformOrigin: "center top", delay: 1}, 0.4);
+
 	});
 </script>
 </body>
