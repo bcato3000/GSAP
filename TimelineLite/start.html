@@ -38,8 +38,17 @@ $(document).ready( function () {
         $mainCopy = $("p"),
         $buttons  = $(".button"),
         $progress = $(".progress"),
-        tl;
+        tl = new TimelineLite();
 
+    CSSPlugin.defaultTransformPerspective = 800;
+
+    tl.from($bg, 0.8, {opacity: 0})
+        .from($into, 0.5, {opacity: 0, left: -200})
+        .from($theWind, 0.5, {opacity: 0, left: 200}, "-=0.25")
+        .from($mainCopy, 0.8, {opacity: 0, top: 50}, "+=0.5")
+        .staggerFrom($buttons, 0.7, {rotationX: -90, opacity: 0, transformOrigin: "center top", ease:Back.easeOut.config(3)}, 0.2, "buttons")
+        .from($progress, tl.duration(), {scaleX: 0, transformOrigin: "left", ease:Linear.easeNone}, 0)
+        .to($progress, 0.4, {opacity: 0, top: -8});
 });   
 
 </script>

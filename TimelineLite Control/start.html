@@ -57,7 +57,7 @@ $(document).ready( function () {
 	CSSPlugin.defaultTransformPerspective = 800;
 
 
-	tl = new TimelineLite();
+	tl = new TimelineLite().onUpdate(updateSlider);
 	
 	tl.from($bg, 0.8, {opacity:0})
 	  .from($into, 0.5, {left:-200, opacity:0})
@@ -68,7 +68,45 @@ $(document).ready( function () {
 	  .from($progress, tl.duration(), {scaleX:0, transformOrigin:"left", ease:Linear.easeNone}, 0)
 	  .to($progress, 0.2, {opacity:0, top:-8});
 
+	$('#play').click(function(){
+		if (tl.progress() < 1) {
+			tl.play();
+		} else {
+			tl.restart();
+		}
+	});
+	$('#pause').click(function(){
+		tl.pause();
+	});
+	$('#reverse').click(function(){
+		tl.reverse();
+	});
+	$('#resume').click(function(){
+		tl.resume();
+	});
+	$('#restart').click(function(){
+		tl.restart();
+	});
+	$('#fastSpeed').click(function(){
+		tl.timeScale(4);
+	});
+	$('#normalSpeed').click(function(){
+		tl.timeScale(1);
+	});
 
+	$('#slider').slider({
+		min: 0,
+		max: 1,
+		step: 0.001,
+		slide: function(event, ui) {
+			tl.pause();
+			tl.progress(ui.value);
+		}
+	});
+
+	function updateSlider() {
+		$('#slider').slider("value", tl.progress());
+	}
 	
 })    
 	
