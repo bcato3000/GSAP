@@ -65,6 +65,12 @@
     var $clapperTop = $('.clapper-top'),
         $action = $('.panel h3');
 
+    TweenLite.to($clapperTop, 0.5, {rotation: -20, transformOrigin: "15px 15px", ease: Power4.easeIn});
+    TweenLite.to($clapperTop, 0.1, {rotation: 0, ease: Power4.easeIn, delay: 1});
+
+    TweenLite.from($action, 0.2, {opacity: 0, scale: 0, ease: Bounce.easeOut, delay: 1.1});
+    TweenLite.to($action, 0.5, {skewX: -45, left: 750, ease: Back.easeIn, delay: 1.5});
+
 </script>
 </body>
 </html>

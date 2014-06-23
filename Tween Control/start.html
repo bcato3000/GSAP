@@ -45,10 +45,20 @@
 
 
 <script>
-    $(document).ready(function() {
+    $(function() {
         
         var $pointer = $("#pointer"),
-            $gauge = $("#speedGauge");        
+            $gauge = $("#speedGauge"),
+            $pointerTween = TweenLite.to($pointer, 1, {rotation: "20_cw", ease:Power1.easeIn, paused: true});
+
+        TweenLite.set($pointer, {rotation: 142, transformOrigin: "0px 4px"});
+        $gauge.mouseenter(function(){
+            $pointerTween.play();
+        });
+        $gauge.mouseleave(function(){
+            $pointerTween.reverse();
+        });
+
         
     });
 </script>

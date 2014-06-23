@@ -12,6 +12,7 @@
             height: 375px;
             white-space: nowrap;
             margin: 50px auto 0 auto;
+            overflow: hidden;
         }
 
         .sliderWrapper div {
@@ -61,7 +62,20 @@
 
 
 <script>
+$(function(){
+    var slideWidth = 530,
+        $slider = $('#sliderImages'),
+        $nextButton = $('#nextButton'),
+        clickCount = 0;
 
+    $nextButton.click(function(){
+        clickCount ++;
+        if (clickCount > 3) {
+            clickCount = 0;
+        }
+        TweenLite.to($slider, 0.5, {left: -clickCount * slideWidth});
+    });
+});
 </script>
 </body>
 </html>

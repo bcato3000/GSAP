@@ -76,17 +76,25 @@
         
         TweenLite.set($pointer, {rotation:142, transformOrigin:"0px 4px"});
     
-        var pointerTween = TweenLite.to($pointer, 1, {rotation:"20_cw", transformOrigin:"0px 4px", paused:true, ease:Power1.easeIn});
+        var pointerTween = TweenLite.to($pointer, 3, {rotation:"20_cw", transformOrigin:"0px 4px", paused:true, ease:Power1.easeIn, onUpdate: showValue});
 
+        function showValue() {
+            displayValue = parseInt(pointerTween.progress() * finalValue);
+            $numberDisplay.text(displayValue);
+        }
     
 
         $gauge.mouseenter( function() { 
-            pointerTween.play();
+            pointerTween.play().timeScale(1);
         });
 
         $gauge.mouseleave( function() {
-            pointerTween.reverse();
+            pointerTween.reverse().timeScale(6);
         });
+
+        $gauge.click(function(){
+            pointerTween.restart();
+        })
 
         
 
