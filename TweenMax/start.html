@@ -13,6 +13,7 @@
             margin:50px auto 0 auto;
             padding-top:10px;
             background: url(img/landscape.jpg); 
+            overflow: hidden;
         }
 
         #message{    
@@ -28,6 +29,7 @@
             border-radius: 20px;
             padding:20px;
             border: solid 4px #A2D0F3;
+            visibility: hidden;
         }
 
         #car{
@@ -49,7 +51,7 @@
 
 </body>
     <!-- load scripts after dom has been rendered -->
-
+    <script src="js/gsap/TweenMax.js"></script>
     <script src="js/jquery/jquery-1.10.1.min.js"></script>
 
     <script>
@@ -59,8 +61,19 @@
             $message = $("#message"),
             count = 0,
             tween;
+        tween = TweenMax.to($car, 1, {left: 800, ease:Linear.easeNone, delay: 1, repeat: 4, repeatDelay: 0.5, onStart: startHandler, onRepeat: repeatHandler, onComplete: completeHandler});
 
-
+        function startHandler() {
+            TweenMax.set($message, {visibility: "visible"});
+        }
+        function repeatHandler() {
+            count ++;
+            $message.text("repeat: " + count);
+            TweenMax.set($car, {backgroundPosition: "0px -=160px"});
+        }
+        function completeHandler() {
+            $message.text("The End");
+        }
 
     });
 </script>
