@@ -10,7 +10,7 @@ body{
   width:300px;
   height:250px;
   background:white;
-  overflow:visible;
+  overflow:hidden;
 }
 
 .panel {
