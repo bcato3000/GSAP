@@ -70,7 +70,7 @@ $(document).ready( function () {
 	CSSPlugin.defaultTransformPerspective = 800;
 
 
-	tl = new TimelineLite({onUpdate:updateSlider});
+	tl = new TimelineLite({onUpdate:updateSlider, onComplete: initMapButton});
 	
 	tl.from($bg, 0.8, {opacity:0})
 	  .from($into, 0.5, {left:-200, opacity:0})
@@ -132,6 +132,7 @@ $(document).ready( function () {
 	}   
 
 	//Fancy Rollover Code
+	TweenLite.set('#controller', {visibility: "hidden"});
 
 	var $mapContainer = $("#mapContainer"),
 		$localExpertBtn = $("#mapContainer .button"),
@@ -140,6 +141,29 @@ $(document).ready( function () {
 		$form = $("#form"),
 		mapTimeline;
 	
+	mapTimeline = new TimelineLite({paused: true});
+
+	mapTimeline.to($localExpertBtn, 0.5, {backgroundColor: "#03203b"})
+		.from($mapPanel, 0.5, {clip: "rect(204px 287px 204px 0px"}, 0)
+		.to($mainCopy, 0.5, {opacity: 0.1}, 0)
+		.staggerFrom($pins, 0.3, {top: -50}, 0.05, "-=0.1")
+		.from($form, 0.2, {top: "+=20", opacity: 0});
+
+	function initMapButton() {
+		$mapContainer.mouseenter(function() {
+			mapTimeline.play().timeScale(1);
+		});
+		$mapContainer.mouseleave(function() {
+			mapTimeline.reverse().timeScale(3);
+		});
+	}
+
+	$mapContainer.mouseenter(function(){
+		mapTimeline.play().timeScale(1);
+	});
+	$mapContainer.mouseleave(function(){
+		mapTimeline.reverse().timeScale(3);
+	});
 });   
 
 
