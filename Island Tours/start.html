@@ -57,8 +57,29 @@
 				.to($map, 0.5, {x: -155, y: -80})
 				.add("Oceanside")
 				.to($map, 0.5, {x: -656, y: -270})
-				.add("Oasis Villa")
+				.add("Pineapple Island")
 				.to($map, 0.5, {x: -926, y: -560})
+				.add("Oasis Villa");
+		}
+
+		function getLabelData() {
+			labels = tl.getLabelsArray();
+			firstLabel = labels[0].name;
+			lastLabel = labels[labels.length -1].name;
+			console.log(firstLabel, lastLabel);
+		}
+
+		function updateNav(label) {
+			if (label === firstLabel) {
+				TweenLite.to($prevBtn, 0.2, {autoAlpha: 0});
+			} else {
+				TweenLite.to($prevBtn, 0.2, {autoAlpha: 1});
+			}
+			if (label === lastLabel) {
+				TweenLite.to($nextBtn, 0.2, {autoAlpha: 0});
+			} else {
+				TweenLite.to($nextBtn, 0.2, {autoAlpha: 1});
+			}
 		}
 
 		$nextBtn.click(function() {
@@ -69,11 +90,26 @@
 		});
 
 		function navigateTo(label) {
-			tl.tweenTo(label);
+			tl.tweenTo(label, {onComplete: showDescription, onCompleteParams:[label]});
+			updateNav(label);
+			hideDescription();
+		}
+
+		function showDescription(label) {
+			$descriptionHead.html(label);
+			$descriptionText.html(descriptions[label]);
+			TweenMax.staggerTo([$descriptionHead, $descriptionText], 0.2, {opacity: 1, left: 0}, 0.05);
+		}
+
+		function hideDescription() {
+			TweenMax.staggerTo([$descriptionHead, $descriptionText], 0.2, {opacity: 0, left: -50,}, 0.05);
 		}
 
 		function init() {
 			buildTimeline();
+			getLabelData();
+			updateNav(firstLabel);
+			showDescription(firstLabel);
 		}
 
 		init();
