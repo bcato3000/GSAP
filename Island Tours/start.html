@@ -49,10 +49,34 @@
 		descriptions["Oasis Villa"] = "This desert paradise is known for its excruciating heat and exotic spices. Visitors find themselves most interested in getting back to Pineapple Island.";	
 
 		//position map so that first location is visible	
+		TweenLite.set($map, {x: 0, y: -610});
 		
-		
-		//timeline
+		function buildTimeline() {
+			tl = new TimelineMax({paused: true});
+			tl.add("Greenlawn Point")
+				.to($map, 0.5, {x: -155, y: -80})
+				.add("Oceanside")
+				.to($map, 0.5, {x: -656, y: -270})
+				.add("Oasis Villa")
+				.to($map, 0.5, {x: -926, y: -560})
+		}
 
+		$nextBtn.click(function() {
+			navigateTo(tl.getLabelAfter());
+		});
+		$prevBtn.click(function(){
+			navigateTo(tl.getLabelBefore());
+		});
+
+		function navigateTo(label) {
+			tl.tweenTo(label);
+		}
+
+		function init() {
+			buildTimeline();
+		}
+
+		init();
 
 	});
 	
