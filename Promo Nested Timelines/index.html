@@ -41,6 +41,8 @@
         TweenLite.set(element, {top:Math.random()*height, left:width});
         tl.to(element, Math.random()*0.5, {left:-50, ease:Linear.easeNone}, Math.random()*3);
       }
+
+      return tl;
       
     }
 
@@ -53,11 +55,21 @@
         .to(element, 3, {left:width, ease:SlowMo.ease.config(0.1, 1.2)}, index * 0.3)
         .from(element, 3, {scale:0, opacity:0, ease:SlowMo.ease.config(0.1, 1.2, true)}, index*0.3);
       })
+
+      return tl;
       
     }
 
-    getStarsTimeline();
-    getTitlesTimeline();
+    function createTimeline() {
+      var mainTimeline = new TimelineLite();
+
+      mainTimeline
+      .from($demo, 0.5, {autoAlpha: 0})
+      .add(getStarsTimeline(), 'panel2')
+      .add(getTitlesTimeline(), 'panel2')
+    }
+
+    TweenLite.delayedCall(1, createTimeline);
     
   })
 </script>

@@ -29,6 +29,19 @@
     var $demo = $("#demo"),
       width = $demo.width(),
       height = $demo.height();
+
+    function getStarsTimeline() {
+      var $starfield = $('#starfield'),
+          tl = new TimelineLite();
+
+      for(var i=0; i<50; i++) {
+        var element = $("<div class='star'></div>").appendTo($starfield);
+        TweenLite.set(element, {top: Math.random() * height, left: width});
+        tl.to(element, Math.random()*0.5, {left:-50, ease:Linear.easeNone}, Math.random()*3);
+      }
+    }
+
+    getStarsTimeline();
   
   });
 </script>

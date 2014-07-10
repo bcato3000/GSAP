@@ -9,7 +9,8 @@ body {
 	width:500px;
 	height:445px;
 	background-color:#000;
-	margin:auto; 
+	margin:auto;
+	overflow: hidden; 
 }
 .panel {
 	position:absolute;
